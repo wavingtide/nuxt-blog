@@ -36,44 +36,37 @@ const articleLink = computed(() => `${window?.location}`)
     <article class="prose max-w-none dark:prose-invert prose-lg">
       <header>
         <h1>{{ post?.title }}</h1>
+        <p class="space-x-3">Tags: 
+          <Tag v-for="tag in post?.tags" :key="tag" :text="tag" class="inline-block no-underline" />
+        </p>
         <p class="text-gray-800 dark:text-gray-200">
           <time v-if="post?.body" :date="post?.date">{{ formatDate(post?.date) }}</time>
         </p>
       </header>
+      <hr />
       <div class="text-gray-800 dark:text-gray-200">
         <ContentRenderer v-if="post?.body" :value="post"></ContentRenderer>
       </div>
-      <!-- <footer>
-        <p>Tags: 
-          <span v-for="tag in post?.tags" :key="tag" class="inline-block mr-2">
-            {{ tag }}
-          </span>
-        </p>
-      </footer> -->
     </article>
 
     <!-- Surrounding articles -->
-    <nav class="flex justify-between gap-4 mt-8">
-      <Ubutton
+    <nav class="grid grid-cols-2 gap-4 mt-8">
+      <NuxtLink
         v-if="previousPost"
-        class="cursor-pointer justify-start border border-black dark:border-white p-10 rounded-md flex-1"
-        variants="ghost"
+        :to="previousPost.path"
+        class="cursor-pointer justify-start border border-black dark:border-white p-8 rounded-md"
       >
-        <NuxtLink :to="previousPost.path">
-          <p class="font-semibold">← Previous: {{ previousPost.title }}</p>
-          <p class="text-sm text-muted-foreground">{{ previousPost.description }}</p>
-        </NuxtLink>
-      </Ubutton>
-      <Ubutton
+        <p class="font-semibold">← Previous: {{ previousPost.title }}</p>
+        <p class="text-sm mt-2 text-gray-500 dark:text-gray-400">{{ previousPost.description }}</p>
+      </NuxtLink>
+      <NuxtLink 
         v-if="nextPost"
-        class="cursor-pointer justify-end border border-black dark:border-white p-10 rounded-md flex-1"
-        variants="ghost"
+        :to="nextPost.path"
+        class="text-right cursor-pointer justify-end border border-black dark:border-white p-8 rounded-md col-start-2"
       >
-        <NuxtLink :to="nextPost.path" class="text-right">
-          <p class="font-semibold">→ Next: {{ nextPost.title }}</p>
-          <p class="text-sm text-muted-foreground">{{ nextPost.description }}</p>
-        </NuxtLink>
-      </Ubutton>
+        <p class="font-semibold">→ Next: {{ nextPost.title }}</p>
+        <p class="text-sm mt-2 text-gray-500 dark:text-gray-400">{{ nextPost.description }}</p>
+      </NuxtLink>
     </nav>
   </section>
 </template>

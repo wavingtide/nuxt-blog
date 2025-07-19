@@ -43,8 +43,8 @@ function to(page) {
                     {{ post.title }}
                   </a>
                 </h2>
-                <div class="flex flex-wrap">
-                  <p>Placeholder for tags</p>
+                <div class="flex flex-wrap space-x-3">
+                  <Tag v-for="tag in post.tags" :key="tag" :text="tag" />
                 </div>
               </div>
               <div class="prose max-w-none text-gray-500 dark:text-gray-400">

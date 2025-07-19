@@ -8,6 +8,8 @@ export default defineContentConfig({
       schema: z.object({
         date: z.date(),
         author: z.string(),
+        tags: z.array(z.string()),
+        draft: z.boolean().default(false),
       })
     }),
     pages: defineCollection({

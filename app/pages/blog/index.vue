@@ -12,7 +12,7 @@ if (!page.value) {
 }
 // fetch the blog post
 const { data: posts } = await useAsyncData("blog-posts", () => {
-  return queryCollection('blog').order('date', 'DESC').all()
+  return queryCollection('blog').where("draft", "<>", true).order('date', 'DESC').all()
 })
 if (!posts.value) {
   throw createError({
@@ -39,10 +39,8 @@ const currentPage = computed(() => {
 
 <template>
   <div v-if="page">
-    <!-- Add a page hero -->
     <h1 class="text-3xl font-bold mb-4">{{ page?.title }}</h1>
     <p class="text-gray-500 dark:text-gray-400 mb-8">{{ page?.description }}</p>
-    <!-- TODO: add pagination functionality-->
     <NuxtLayout name="list-layout" :posts="posts" :current-page="currentPage">
     </NuxtLayout>
   </div>
