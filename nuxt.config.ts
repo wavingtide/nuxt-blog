@@ -15,9 +15,6 @@ export default defineNuxtConfig({
     '@nuxthub/core',
   ],
 
-  future: {
-    compatibilityVersion: 4,
-  },
   css: ['~/assets/css/main.css'],
   vite: {
     plugins: [
