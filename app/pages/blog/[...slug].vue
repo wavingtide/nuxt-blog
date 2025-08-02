@@ -50,7 +50,7 @@ const articleLink = computed(() => `${window?.location}`)
     </article>
 
     <!-- Surrounding articles -->
-    <nav class="grid grid-cols-2 gap-4 mt-8">
+    <template class="grid grid-cols-2 gap-4 mt-8">
       <NuxtLink
         v-if="previousPost"
         :to="previousPost.path"
@@ -67,6 +67,6 @@ const articleLink = computed(() => `${window?.location}`)
         <p class="font-semibold">→ Next: {{ nextPost.title }}</p>
         <p class="text-sm mt-2 text-gray-500 dark:text-gray-400">{{ nextPost.description }}</p>
       </NuxtLink>
-    </nav>
+    </template>
   </section>
 </template>

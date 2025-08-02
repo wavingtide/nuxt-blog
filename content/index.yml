@@ -1,0 +1,11 @@
+seo:
+  title: "Wei Ti - Software Developer/Data Engineer"
+  description: "Welcome to my personal website. I'm Wei Ti, a Software Developer/Data Engineer with a passion for building scalable data solutions. Explore my projects and learn more about my work and thoughts."
+title: "Hey, I am Wei Ti Software Developer/Data Engineer"
+description: "I build scalable data systems where engineering meets insight. Based in Singapore, transforming raw data into meaningful stories through code and curiosity"
+about:
+  title: "About Me"
+  description: "As a Software Developer/Data Engineer with 4 years of experience, I specialize in turning data into usable tools and insights. From building web applications to developing custom data scraping pipelines, I apply solid software engineering principles to solve real-world problems."
+blog:
+  title: "Latest articles"
+  description: "Some thoughts on software development and things I found interesting"

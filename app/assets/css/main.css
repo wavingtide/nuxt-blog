@@ -4,3 +4,11 @@
 @plugin "@tailwindcss/typography";
 
 @custom-variant dark (&:where(.dark, .dark *));
+
+:root {
+  --ui-bg: #e7e7e7;
+}
+
+.dark {
+  --ui-bg: #181818;
+}
