@@ -19,7 +19,9 @@ defineProps<{
       }"
     >
       <template #list-leading>
-        <img src="/favicon.svg" alt="Logo" class="h-4 w-4 mr-3" />
+        <NuxtLink to="/">
+          <img src="/favicon.svg" alt="Logo" class="h-4 w-4 mr-3" />
+        </NuxtLink>
       </template>
       <template #list-trailing>
         <ColorModeButton />
