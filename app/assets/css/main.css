@@ -6,7 +6,7 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 :root {
-  --ui-bg: #e7e7e7;
+  --ui-bg: #e1e1e1;
 }
 
 .dark {

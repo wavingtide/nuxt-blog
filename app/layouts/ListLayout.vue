@@ -26,7 +26,7 @@ function to(page) {
     <template v-if="!displayPosts.length">No posts found.</template>
     <template v-else>
       <ul>
-        <li v-for="post in displayPosts" :key="post.path" class="py-4 p-4 hover:shadow-sm dark:hover:shadow-white/20 transition duration-200 rounded">
+        <li v-for="post in displayPosts" :key="post.path" class="py-4 hover:shadow-sm dark:hover:shadow-white/20 transition duration-200 rounded">
           <BlogPost :post="post" />
         </li>
       </ul>

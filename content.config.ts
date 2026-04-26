@@ -43,7 +43,7 @@ export default defineContentConfig({
         date: z.date(),
         author: z.string(),
         tags: z.array(z.string()),
-        draft: z.boolean().default(false),
+        draft: z.boolean().default(true),
       })
     }),
     pages: defineCollection({
