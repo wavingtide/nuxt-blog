@@ -1,5 +1,16 @@
-<script setup>
-const { project, reverse } = defineProps(['project', 'reverse'])
+<script setup lang="ts">
+interface Project {
+  title: string;
+  description: string;
+  image?: string;
+  frontend_url?: string;
+  github_url?: string;
+  blog_url?: string;
+  date?: string | Date;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  [key: string]: any;
+}
+const { project, reverse } = defineProps<{ project: Project, reverse: boolean }>()
 </script>
 
 <template>
@@ -13,7 +24,7 @@ const { project, reverse } = defineProps(['project', 'reverse'])
       <img
         v-if="project.image"
         :src="project.image"
-        alt="Project image"
+        :alt="project.title ? `Screenshot of ${project.title}` : 'Project image'"
         class="w-full aspect-[2/1] rounded-lg object-cover"
       />
     </div>
@@ -28,7 +39,8 @@ const { project, reverse } = defineProps(['project', 'reverse'])
           v-if="project.frontend_url"
           :to="project.frontend_url"
           target="_blank"
-          alt="View project"
+          aria-label="View project"
+          title="View project"
           class="hover:text-primary-500 dark:hover:text-primary-400 transition duration-200"
         >
           <UIcon name="i-lucide-external-link" class="size-5" />
@@ -37,7 +49,8 @@ const { project, reverse } = defineProps(['project', 'reverse'])
           v-if="project.github_url"
           :to="project.github_url"
           target="_blank"
-          alt="View source code"
+          aria-label="View source code"
+          title="View source code"
           class="hover:text-primary-500 dark:hover:text-primary-400 transition duration-200"
         >
           <UIcon name="i-lucide-github" class="size-5" />
@@ -46,7 +59,8 @@ const { project, reverse } = defineProps(['project', 'reverse'])
           v-if="project.blog_url"
           :to="project.blog_url"
           target="_blank"
-          alt="Read blog post"
+          aria-label="Read blog post"
+          title="Read blog post"
           class="hover:text-primary-500 dark:hover:text-primary-400 transition duration-200"
         >
           <UIcon name="i-lucide-book" class="size-5" />

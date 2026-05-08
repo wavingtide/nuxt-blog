@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 const { data: page } = await useAsyncData('home-page', () => {
   return queryCollection('home').first()
 })
@@ -33,16 +33,18 @@ useSeoMeta({
 </script>
 
 <template>
-  <h1 class="text-5xl font-bold mb-8">{{ page.title }}</h1>
-  <p class="mb-12">{{ page.description }}</p>
-  <h1 class="text-3xl font-bold mb-4">{{ page?.blog.title }}</h1>
-  <p class="text-gray-600 dark:text-gray-400 mb-8">{{ page?.blog.description }}</p>
-  <template v-if="!displayPosts?.length">No posts found.</template>
-  <template v-else>
-    <ul>
-      <li v-for="post in displayPosts" :key="post.path" class="py-4 hover:shadow-sm dark:hover:shadow-white/20 transition duration-200 rounded">
-        <BlogPost :post="post" />
-      </li>
-    </ul>
-  </template>
+  <div v-if="page">
+    <h1 class="text-5xl font-bold mb-8">{{ page.title }}</h1>
+    <p class="mb-12">{{ page.description }}</p>
+    <h2 class="text-3xl font-bold mb-4">{{ page?.blog.title }}</h2>
+    <p class="text-gray-600 dark:text-gray-400 mb-8">{{ page?.blog.description }}</p>
+    <template v-if="!displayPosts?.length">No posts found.</template>
+    <template v-else>
+      <ul>
+        <li v-for="post in displayPosts" :key="post.path" class="py-4 hover:shadow-sm dark:hover:shadow-white/20 transition duration-200 rounded">
+          <BlogPost :post="post" />
+        </li>
+      </ul>
+    </template>
+  </div>
 </template>

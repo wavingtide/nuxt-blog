@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 const { data: page } = await useAsyncData('projects-page', () => {
   return queryCollection('pages').path('/projects').first()
 })
@@ -28,21 +28,23 @@ useSeoMeta({
   <div v-if="page">
     <h1 class="text-3xl font-bold mb-4">{{ page?.title }}</h1>
     <p class="text-gray-600 dark:text-gray-400 mb-8">{{ page?.description }}</p>
-    <template class="mb-20 flex text-white text-center dark:text-black">
+    <div class="mb-20 flex text-white text-center dark:text-black">
       <NuxtLink
-        :to="appConfig.contact[page.links[0].to]"
+        v-if="page?.links?.[0]"
+        :to="appConfig.contact?.[page.links[0].to as keyof typeof appConfig.contact] as string"
         target="_blank"
         class="px-2 py-1 rounded bg-primary-500 dark:bg-primary-400 hover:bg-primary-400 dark:hover:bg-primary-500 transition duration-200"
       >
-        {{  page.links[0].label }}
+        {{ page.links[0].label }}
       </NuxtLink>
       <NuxtLink
-        :to="`mailto:${appConfig.contact[page.links[1].to]}`"
+        v-if="page?.links?.[1]"
+        :to="`mailto:${appConfig.contact?.[page.links[1].to as keyof typeof appConfig.contact]}`"
         class="ml-3 px-2 py-1 rounded bg-neutral-950 dark:bg-neutral-100 hover:bg-neutral-800 dark:hover:bg-neutral-300 transition duration-200"
       >
         {{ page.links[1].label }}
       </NuxtLink>
-    </template>
+    </div>
     <template v-if="projects?.length">
       <div class="space-y-4 md:space-y-16">
         <ProjectCard
