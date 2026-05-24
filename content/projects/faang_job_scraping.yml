@@ -1,5 +1,8 @@
 title: FAANG Job Scraping
-description: A project to scrape job data from FAANG career pages
+description: |
+  A project to scrape job data from FAANG career pages.
+
+  Due to the dynamic nature of career pages, the project is discontinued as the scraping process became increasingly complex and unreliable.
 date: 2024-09-08
 tags: ["FAANG", "web scraping", "data engineering"]
 github_url: https://github.com/career-related/job-scraping
